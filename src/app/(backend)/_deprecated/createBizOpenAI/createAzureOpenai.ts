@@ -8,10 +8,13 @@ import { ChatErrorType } from '@/types/fetch';
 export const createAzureOpenai = (params: {
   apiVersion?: string | null;
   model: string;
+  endpoint?: string | null;
   userApiKey?: string | null;
 }) => {
-  const {AZURE_ENDPOINT,AZURE_API_VERSION, AZURE_API_KEY } = getLLMConfig();
-  const baseURL = urlJoin(AZURE_ENDPOINT, `/openai/deployments/${params.model.replace('.', '')}`); // refs: https://test-001.openai.azure.com/openai/deployments/gpt-35-turbo
+ const { AZURE_ENDPOINT = '', AZURE_API_VERSION, AZURE_API_KEY } = getLLMConfig();
+
+  const endpoint = !params.endpoint ? AZURE_ENDPOINT : params.endpoint;
+  const baseURL = urlJoin(endpoint, `/openai/deployments/${params.model.replace('.', '')}`); // refs: https://test-001.openai.azure.com/openai/deployments/gpt-35-turbo
 
   const defaultApiVersion = AZURE_API_VERSION || '2023-08-01-preview';
   const apiVersion = !params.apiVersion ? defaultApiVersion : params.apiVersion;
