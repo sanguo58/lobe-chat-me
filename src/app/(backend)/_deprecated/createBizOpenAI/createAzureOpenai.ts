@@ -7,8 +7,8 @@ import { ChatErrorType } from '@/types/fetch';
 // create Azure OpenAI Instance
 export const createAzureOpenai = (params: {
   apiVersion?: string | null;
-  model: string;
   endpoint?: string | null;
+  model: string;
   userApiKey?: string | null;
 }) => {
  const { AZURE_ENDPOINT = '', AZURE_API_VERSION, AZURE_API_KEY } = getLLMConfig();
