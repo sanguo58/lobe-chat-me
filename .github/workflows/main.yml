@@ -1,0 +1,10 @@
+            - name: Configure Bun action
+  # You may pin to the exact commit or the version.
+  # uses: jcbhmr/configure-bun-action@53e854cb156980aba4f0e4b80d8651d9decb87f4
+  uses: jcbhmr/configure-bun-action@v0.13.0
+  with:
+    # 
+    token: # optional, default is ${{ github.token }}
+    # 
+    path: # optional, default is .
+          
